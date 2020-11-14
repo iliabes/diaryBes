@@ -40,14 +40,14 @@ function create(elem){
     let value = document.createElement('p')
     let work = document.createElement('p')
     let work2 = document.createElement('p')
-    div.className = "card blue-grey darken-1 "
+    div.className = "card #e1bee7 purple lighten-4 col s3 m4"
     good.innerText = elem.good
     list.innerText = elem.list
     value.innerText = elem.value
     work.innerText = elem.work
     work2.innerText = elem.work2
     cont.append(div);
-    div.append(good,list,value,work,work2)
+    div.prepend(good,list,value,work,work2)
     
 }
 

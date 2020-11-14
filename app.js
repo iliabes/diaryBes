@@ -60,7 +60,7 @@ app.use('/mass',async (req,res)=>{
   //   res.sendFile(__dirname + '/public/app.html')
   // })
 
-    app.use('/app', 
+    app.use('/app',
     (req,res)=>{
     console.log('app')
     res.sendFile(__dirname + '/public/app.html')
