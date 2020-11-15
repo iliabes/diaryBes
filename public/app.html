@@ -5,32 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>app</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="../node_modules/magnific-popup/dist/magnific-popup.css">
     <link rel="stylesheet" href="style.css">
+    
 </head>
 <body>
 <h1 class="title">app</h1>
-<div id='cont' class="row">
 
 
-<!-- <div class="row">
-    <div class="row"> -->
-        <div class="input-field col s3">
-          <form id="form" action='' method='' class="col s12">
-          <input placeholder="value" name='value' id="value" type="text" >
-          <input placeholder="list" name='list' id="list" type="text" class="validate">
-          <input placeholder="good" name='good' id="good" type="text" class="validate">
-          <input placeholder="work" name='work' id="work" type="text" class="validate">
-          <input placeholder="work2" name='work2' id="work2" type="text" class="validate">
-          <input placeholder="data" name='data' id="data" type="text" class="validate">
-          <button id="btn">+</button>
-        <!-- </div>
-      </div> -->
-    </form>
-  </div>
-  
+
+
+
+  <div class="myform white-popup mfp-hide"  id="myPopUp" class="row">
+      <div class="input-field col s3">
+        <form id="form" action='' method='' class=" col s12">
+        <input placeholder="value" name='value' id="value" type="text" >
+        <input placeholder="list" name='list' id="list" type="text" class="validate">
+        <input placeholder="good" name='good' id="good" type="text" class="validate">
+        <input placeholder="work" name='work' id="work" type="text" class="validate">
+        <input placeholder="work2" name='work2' id="work2" type="text" class="validate">
+        <input placeholder="data" name='data' id="data" type="text" class="validate">
+        <button id="btn">+</button>
+      </div>
     </div>
 
+<button id="popUp">popUp</button>
 
+<div class="contTest">
+  <div data-vla="val test1" class="test test1">test1</div>
+  <div data-vla="val test2" data-value="value" class="test test2">test2</div>
+</div>
+
+<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<script src="../node_modules/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
 <script src="./script.js"></script>
 </body>
 </html>
