@@ -39,15 +39,20 @@ function push(){
   event.preventDefault();
   let fd = new FormData(form);
   console.log(fd.get('value'))
-  let data = {"value": fd.get('value'),"data":fd.get('data'),"work": fd.get('work'),"work2":fd.get('work2'),"work": fd.get('work'),"good":fd.get('good'),"work": fd.get('work'),"list":fd.get('list')}
+  let data = {"value": fd.get('value'),"data":fd.get('data'),"work": fd.get('work'),"work2":fd.get('work2'),"list":fd.get('list'),"good":fd.get('good')}
   
   meFetch(data)
+  create(data)
   console.log(data)
 }
 
 function create(elem){
+  console.log('create')
   let col = document.createElement('div');
-  col.className = "col s12 m3"
+  col.className = "col s12 m3 "
+  if(elem.id){
+    col.id = elem._id;
+  }
   let card = document.createElement('div');
   card.className = "card blue-grey darken-1"
   let cardContent = document.createElement('div');
@@ -62,6 +67,7 @@ function create(elem){
   let list = document.createElement('a')
   let work = document.createElement('a')
   let work2 = document.createElement('a')
+  let btnRemove = document.createElement('a')
 
   good.innerText = elem.good
   good.className = 'good'
@@ -71,13 +77,32 @@ function create(elem){
   work.className = 'work'
   work2.innerText = elem.work2
   work2.className = 'deal'
+  btnRemove.innerText = 'del'
+  btnRemove.addEventListener('click',(e)=>{
+    console.log(e.target.closest('.col').id)
+    removeElem(e.target.closest('.col').id,e.target.closest('.col'))
+  })
   cont.append(col);
   col.append(card)
-  card.append(cardContent,cardAction)
-  cardContent.prepend(title)
-  cardAction.prepend(good,list,work,work2)
-  
+    card.append(cardContent,cardAction)
+    cardContent.prepend(title)
+    cardAction.prepend(good,list,work,work2,btnRemove)
+    
+  }
+
+function removeElem(id,elem){
+  console.log('remove',id)
+  let response =  fetch('/removeElem',{
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json;charset=utf-8'
+    },
+    body: JSON.stringify({'id':id})
+  });
+  elem.remove()
+
 }
+
 
 btn.addEventListener('click',push)
 
@@ -131,3 +156,21 @@ $('.open-popup-link').magnificPopup({
   type:'inline',
   midClick: true // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.
 });
+
+
+
+
+
+
+
+
+
+
+
+
+let curcle = document.getElementById('curcle')
+curcle.addEventListener('click',()=>{
+  curcle.style.width = '100px'
+  curcle.style.height = '100px'
+  curcle.innerText = 'text'
+})

@@ -32,7 +32,12 @@ passport.use(new LocalStrategy({ },
 
   ));
 
-const User = mongoose.model('user', MySheme);
+
+//mongoose ----------------------------------
+
+
+console.log(MySheme)
+const User =  mongoose.model('user', MySheme);
 
   
 // app.post('/', 
@@ -66,12 +71,24 @@ app.use('/mass',async (req,res)=>{
     res.sendFile(__dirname + '/public/app.html')
   })
 
-  app.post('/bd',(req,res)=>{
-    console.log('bd')
-    console.log(req.body)
-    let saveUser = new User(req.body)
-    saveUser.save();
+  app.post('/removeElem',(req,res)=>{
+    console.log('remove')
+    console.log(req.body.id)
+    User.findOneAndRemove({_id: req.body.id},(err,doc)=>{
+      if(err){console.log(err)}
+      console.log('this elem if deleted:' + doc)
     })
+    })
+
+    app.post('/bd',(req,res)=>{
+      console.log('bd')
+      console.log(req.body)
+      let saveUser = new User(req.body)
+      saveUser.save((err)=>{
+        if(err){console.log(err)}
+        console.log('save is :' + saveUser)
+      });
+      })
 
   app.use('/',(req,res)=>{
     console.log('/')
@@ -84,7 +101,7 @@ app.use('/mass',async (req,res)=>{
 
 async function start (){
   try{
-      mongoose.connect("mongodb+srv://dataBase:1q2w3e@cluster0.ejvhd.mongodb.net/collect1", { useNewUrlParser: true ,useUnifiedTopology: true},()=>{
+      mongoose.connect("mongodb+srv://dataBase:1q2w3e@cluster0.ejvhd.mongodb.net/collect1", { useNewUrlParser: true ,useUnifiedTopology: true,useFindAndModify:false},()=>{
       app.listen(3000,()=>{
           console.log('server is done')
       })

@@ -1,32 +1,30 @@
 const { Schema, model } = require('mongoose')
 
 
-const userScheme = new Schema({
+
+module.exports = new Schema({
+    good : {
+      type: String,
+      default: 'goodDef'
+    },
     value: {
-        type: String,
-        default: 'defString'
+      type: String,
+      default: 'valDef'
     },
-    work:{
-        type: String,
-        default: 'defWork'
+    work : {
+      type: String,
+      default: 'goodwork'
     },
-    work2:{
-        type: String,
-        default: 'defDdeal'
+    work2: {
+      type: String,
+      default: 'goodwork'
     },
-    list:{
-        type: String,
-        default: 'defList'
+    list : {
+      type: String,
+      default: 'goodlist'
     },
-    good:{
-        type: String,
-        default: 'defGood'
+    data: {
+      type: String,
+      default: 'gooddata'
     },
-    data:{
-        type: String,
-        default: 'defdata'
-    },
-});
-
-
-module.exports = {userScheme}
+  });
