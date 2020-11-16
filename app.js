@@ -69,6 +69,8 @@ app.use('/mass',async (req,res)=>{
   app.post('/bd',(req,res)=>{
     console.log('bd')
     console.log(req.body)
+    let saveUser = new User(req.body)
+    saveUser.save();
     })
 
   app.use('/',(req,res)=>{

@@ -27,30 +27,23 @@ async function meFetch(data){
   let response = await fetch('/bd',{
     method: 'POST',
     headers: {
-      'Content-Type':'application/json;charset=UTF-8'
+      'Content-Type': 'application/json;charset=utf-8'
     },
-    body: data
+    body: JSON.stringify(data)
   });
 }
 
-// function create(elem){
-//     let div = document.createElement('div');
-//     let good = document.createElement('p')
-//     let list = document.createElement('p')
-//     let value = document.createElement('p')
-//     let work = document.createElement('p')
-//     let work2 = document.createElement('p')
-//     div.className = "card #e1bee7 purple lighten-4 col s3 m4"
-//     good.innerText = elem.good
-//     list.innerText = elem.list
-//     value.innerText = elem.value
-//     work.innerText = elem.work
-//     work2.innerText = elem.work2
-//     cont.append(div);
-//     div.prepend(good,list,value,work,work2)
-    
-// }
 
+function push(){
+  console.log('push')
+  event.preventDefault();
+  let fd = new FormData(form);
+  console.log(fd.get('value'))
+  let data = {"value": fd.get('value'),"data":fd.get('data'),"work": fd.get('work'),"work2":fd.get('work2'),"work": fd.get('work'),"good":fd.get('good'),"work": fd.get('work'),"list":fd.get('list')}
+  
+  meFetch(data)
+  console.log(data)
+}
 
 function create(elem){
   let col = document.createElement('div');
@@ -90,15 +83,7 @@ btn.addEventListener('click',push)
 
 
 
-function push(){
-  event.preventDefault();
-  let fd = new FormData(form);
-  console.log(fd.get('value'))
-  let data = {"value": fd.get('value'),"data":fd.get('data'),"work": fd.get('work'),"work2":fd.get('work2'),"work": fd.get('work'),"good":fd.get('good'),"work": fd.get('work'),"list":fd.get('list')}
-  
-  meFetch(JSON.stringify(data))
-  
-}
+
 
 //-------------------------------------------------modal
 
