@@ -50,9 +50,8 @@ function create(elem){
   console.log('create')
   let col = document.createElement('div');
   col.className = "col s12 m3 "
-  if(elem.id){
-    col.id = elem._id;
-  }
+  console.log(elem._id)
+  col.id = elem._id;
   let card = document.createElement('div');
   card.className = "card blue-grey darken-1"
   let cardContent = document.createElement('div');

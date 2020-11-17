@@ -6,11 +6,13 @@ const LocalStrategy = require('passport-local').Strategy;
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 const MySheme = require('./model/sheme')
+const mutler = require('multer')
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static(__dirname + "/public"));
 app.use(passport.initialize());
+app.use(mutler({dest:'upload'}).single('filedata'))
 
 const UserDB = {
   username:"user1",
@@ -36,7 +38,6 @@ passport.use(new LocalStrategy({ },
 //mongoose ----------------------------------
 
 
-console.log(MySheme)
 const User =  mongoose.model('user', MySheme);
 
   
@@ -89,6 +90,16 @@ app.use('/mass',async (req,res)=>{
         console.log('save is :' + saveUser)
       });
       })
+
+  app.post('/upload',async (req,res,next)=>{
+      let filedata = await req.file;
+      console.log(filedata)
+      if(!filedata){
+        res.send('filure')
+      }else{
+        res.send('file download')
+      }
+    })
 
   app.use('/',(req,res)=>{
     console.log('/')
