@@ -12,3 +12,79 @@
     background-color: aquamarine;
     border-radius: 100px;
 }
+
+/* //----------------------------------- */
+
+.modal-wind{
+    margin: 0 auto;
+    width: 500px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    background:#F1F8E9;
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    margin-left: -250px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    visibility: visible;
+    transform: rotate3d(1, 0, 0, 0deg);
+    opacity: 1;
+    transition: transform 1.3s , opacity 0.4s , top .5s ;
+    z-index: 999;
+}
+
+
+
+.modal-wind p{
+    padding: 5px;
+}
+
+.header-cont{
+    width: 100%;
+    background: #A7FFEB;
+    height: 40px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.header-cont h1{
+    margin: 0;
+    font-size: 20px;
+    padding: 7px;
+}
+
+
+.cancel{
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 10px;
+    cursor: pointer;
+}
+
+#link{
+    cursor: pointer;
+    color:blue;
+}
+
+.inp{
+    width: 80%;
+    margin: 5px;
+}
+
+.overlay{
+    top: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: black;
+    opacity: .5;
+}
+
+
+.modal-wind .work ,.modal-wind .text,.modal-wind .deal ,.modal-wind .good, .modal-wind .data,.modal-wind .work2, .modal-wind .list{
+    display: inline-block;
+    width: 20%;
+}

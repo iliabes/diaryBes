@@ -47,10 +47,10 @@ function push(){
 }
 
 function create(elem){
-  console.log('create')
+
   let col = document.createElement('div');
-  col.className = "col s12 m3 "
-  console.log(elem._id)
+  col.className = "col s12 m5 "
+
   col.id = elem._id;
   let card = document.createElement('div');
   card.className = "card blue-grey darken-1"
@@ -66,8 +66,12 @@ function create(elem){
   let list = document.createElement('a')
   let work = document.createElement('a')
   let work2 = document.createElement('a')
+  let deal = document.createElement('a')
   let btnRemove = document.createElement('a')
+  let data = document.createElement('a')
 
+  data.innerText = elem.data
+  data.className = 'data'
   good.innerText = elem.good
   good.className = 'good'
   list.innerText = elem.list
@@ -85,7 +89,7 @@ function create(elem){
   col.append(card)
     card.append(cardContent,cardAction)
     cardContent.prepend(title)
-    cardAction.prepend(good,list,work,work2,btnRemove)
+    cardAction.prepend(data,good,list,work,work2,btnRemove)
     
   }
 
