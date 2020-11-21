@@ -1,17 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-router.use('/app',
-    (req,res)=>{
-    console.log('app')
-    res.send('sdfsdf')
-  })
 
-  router.use('/ap',
-    (req,res)=>{
-    console.log('app')
-    res.send('1')
-  })
+
 
 module.exports = router;
 
@@ -96,9 +87,5 @@ module.exports = router;
 //       }
 //     })
 
-//   app.use('/',(req,res)=>{
-//     console.log('/')
-//     res.sendFile(__dirname + '/public/login.html')
-//     })
 
 

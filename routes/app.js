@@ -1,30 +1,21 @@
 const express = require('express')
+const router = express.Router();
 const app = express();
-
-
-
-
-// app.use('/',require('./routes/app.js'))
-
-
-
-
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
-const MySheme = require('./model/sheme')
+const MySheme = require('../model/sheme')
 const mutler = require('multer')
 
 
-//port !!!!!
-
-app.use(bodyParser.json())
+router.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static(__dirname + "/public"));
 app.use(passport.initialize());
 app.use(mutler({dest:'upload'}).single('filedata'))
+
 
 
 const UserDB = {
@@ -47,27 +38,30 @@ passport.use(new LocalStrategy({ },
 
   ));
 
-
-//mongoose ----------------------------------
-
-
 const User =  mongoose.model('user', MySheme);
+// app main aut
 
 
-
-
-  
-// app.post('/', 
-//   passport.authenticate('local', { failureRedirect: '/' ,session: false}),
-//   function(req, res) {
-//     res.redirect('/app');
-//   });
+  app.use('/app',  passport.authenticate('local', { failureRedirect: '/login' ,session: false}),
+    (req,res)=>{
+    console.log('app')
+    res.sendFile(process.cwd() + '/public/app.html')
+  })
 
 
 
 
 
-app.use('/mass',async (req,res)=>{
+// router.use('/app',
+//     (req,res)=>{
+//     console.log('app')
+//     res.sendFile(process.cwd() + '/public/app.html')
+//   })
+
+ 
+
+  //send item
+  router.use('/mass',async (req,res)=>{
   console.log('mass')
   let test;
   let dat = await User.find({},(err,doc)=>{
@@ -76,19 +70,8 @@ app.use('/mass',async (req,res)=>{
   res.json(test)
 })
 
-//   app.use('/app',  passport.authenticate('local', { failureRedirect: '/' ,session: false}),
-//     (req,res)=>{
-//     console.log('app')
-//     res.sendFile(__dirname + '/public/app.html')
-//   })
-
-    app.use('/app',
-    (req,res)=>{
-    console.log('app')
-    res.sendFile(__dirname + '/public/app.html')
-  })
-
-  app.post('/removeElem',(req,res)=>{
+//remove item
+router.post('/removeElem',(req,res)=>{
     console.log('remove')
     console.log(req.body.id)
     User.findOneAndRemove({_id: req.body.id},(err,doc)=>{
@@ -97,17 +80,19 @@ app.use('/mass',async (req,res)=>{
     })
     })
 
-    app.post('/bd',(req,res)=>{
-      console.log('bd')
-      console.log(req.body)
-      let saveUser = new User(req.body)
-      saveUser.save((err)=>{
-        if(err){console.log(err)}
-        console.log('save is :' + saveUser)
-      });
-      })
+//save item
+router.post('/bd',(req,res)=>{
+console.log('bd')
+console.log(req.body)
+let saveUser = new User(req.body)
+saveUser.save((err)=>{
+if(err){console.log(err)}
+console.log('save is :' + saveUser)
+});
+})
 
-      app.post('/refresh',(req,res)=>{
+//update item
+      router.post('/refresh',(req,res)=>{
         console.log('bd')
         console.log(req.body)
       User.updateOne({_id: req.body.id}, 
@@ -123,8 +108,8 @@ app.use('/mass',async (req,res)=>{
         })
 
 
-
-  app.post('/upload',async (req,res,next)=>{
+//load img
+  router.post('/upload',async (req,res,next)=>{
       let filedata = await req.file;
       console.log(filedata)
       if(!filedata){
@@ -134,24 +119,16 @@ app.use('/mass',async (req,res)=>{
       }
     })
 
-  app.use('/',(req,res)=>{
-    console.log('/')
-    res.sendFile(__dirname + '/public/login.html')
-    })
-
-
-
-
-
-async function start (){
-  try{
-      mongoose.connect("mongodb+srv://dataBase:1q2w3e@cluster0.ejvhd.mongodb.net/collect1", { useNewUrlParser: true ,useUnifiedTopology: true,useFindAndModify:false},()=>{
-      app.listen(3000,()=>{
-          console.log('server is done')
+router.use('/login',(req,res)=>{
+      console.log('/login')
+      res.sendFile(process.cwd() + '/public/login.html')
       })
-  });
-  }catch(e){
-      console.log(e)
-  }
-  }start()
+      
+app.post('/login', 
+      passport.authenticate('local', { failureRedirect: '/login' ,session: false}),
+      function(req, res) {
+        res.sendFile(process.cwd() + '/public/app.html')
+      });
+    
 
+module.exports = router;
