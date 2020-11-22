@@ -61,8 +61,11 @@ function create(elem){
   title.innerText = elem.value
   let cardAction = document.createElement('div');
   cardAction.className = "card-action"
+  let cardImage = document.createElement('div');
+  card.className = "card blue-grey darken-1"
+  cardImage.className = 'card-image';
 
-  let good = document.createElement('a')  
+  let good = document.createElement('div')  
   let list = document.createElement('a')
   let work = document.createElement('a')
   let work2 = document.createElement('a')

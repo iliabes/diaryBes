@@ -1,6 +1,86 @@
-.card{
-    margin-left: 1px;
+.cont{
+    background-color: red;
 }
+
+
+
+
+.card{
+    display:flex;
+    flex-direction: column;
+    box-shadow: 0.4em 0.4em 5px rgba(122,122,122,0.5);
+}
+
+
+.card .mcard-action{
+    padding: 10px;
+    grid-template-rows: auto ;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+}
+
+.card .mcard-action .good{
+    width: 50px;
+    height: 20px;
+    border: 4px dotted white;
+}
+
+
+.card .mcard-action .good .good{
+    background-color: green;
+}
+
+.card .mcard-action .good .grey{
+    background-color: grey;
+}
+
+.card .mcard-action .good .red{
+    background-color: red;
+}
+
+.card .mcard-content{
+    padding: 10px;
+    width: 100%;
+    display: flex;
+    border-bottom: 1px dotted black;
+}
+
+.card .card-image{
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 1rem;
+}
+
+.card .card-image img{
+    width: 45%;
+   
+}
+
+.card .card-image .del{
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+   
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #000;
+    background-image: -webkit-linear-gradient(left, #fff, #000, #fff);
+    background-image: -moz-linear-gradient(left, #fff, #000, #fff);
+    background-image: -ms-linear-gradient(left, #fff, #000, #fff);
+    background-image: -o-linear-gradient(left, #fff, #000, #fff);
+}
+
+
+
+
 
 .myform{
     background-color: #fff;
@@ -88,3 +168,12 @@
     display: inline-block;
     width: 20%;
 }
+
+.modal-trigger{
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+}
+
+/* ------------------------ */
+
