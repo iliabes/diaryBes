@@ -28,7 +28,7 @@
 }
 
 
-.card .mcard-action .good .good{
+.card .mcard-action .good .green{
     background-color: green;
 }
 
@@ -47,13 +47,17 @@
     border-bottom: 1px dotted black;
 }
 
-.card .card-image{
-    padding: 10px;
+
+.card .mcard-content .mcard-title{
+    font-size: 20px;
+}
+
+.card .card-image {
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-around;
-    gap: 1rem;
+    flex-direction: row;
+    justify-content: center;
+    gap:1rem;
 }
 
 .card .card-image img{
@@ -79,8 +83,12 @@ hr {
 }
 
 
-
-
+.calendar::before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 400;
+  content: "\f1ea";
+  color: blue;
+}
 
 .myform{
     background-color: #fff;
@@ -169,11 +177,12 @@ hr {
     width: 20%;
 }
 
-.modal-trigger{
+/* .modal-trigger{
     position: absolute;
     bottom: 50px;
     right: 50px;
-}
+    background-color: red;
+} */
 
 /* ------------------------ */
 

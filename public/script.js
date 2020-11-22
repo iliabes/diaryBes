@@ -47,23 +47,24 @@ function push(){
 }
 
 function create(elem){
-
+  console.log('elem:',elem)
   let col = document.createElement('div');
-  col.className = "col s12 m5 "
-
-  col.id = elem._id;
   let card = document.createElement('div');
-  card.className = "card blue-grey darken-1"
-  let cardContent = document.createElement('div');
-  cardContent.className = "card-content white-text"
-  let title = document.createElement('span')
-  title.className ="truncate card-title"
-  title.innerText = elem.value
   let cardAction = document.createElement('div');
-  cardAction.className = "card-action"
+  let cardContent = document.createElement('div');
   let cardImage = document.createElement('div');
-  card.className = "card blue-grey darken-1"
+
+  col.className = "col s12 m4 "
+  col.id = elem._id;
+
+  card.className = "card #bbdefb blue lighten-4"
+
+  cardAction.className = "mcard-action"
+  cardContent.className = "mcard-content white-text"
   cardImage.className = 'card-image';
+
+
+
 
   let good = document.createElement('div')  
   let list = document.createElement('a')
@@ -72,17 +73,34 @@ function create(elem){
   let deal = document.createElement('a')
   let btnRemove = document.createElement('a')
   let data = document.createElement('a')
-
-  data.innerText = elem.data
+  data.innerText ='📅' + elem.data
   data.className = 'data'
-  good.innerText = elem.good
   good.className = 'good'
-  list.innerText = elem.list
+  console.log(elem.good)
+  switch(elem.good){
+    case("-1"): good.classList.add("red") ;break;
+    case("0"): good.classList.add("grey");break;
+    case("1"): good.classList.add("green");break;
+  }
+  list.innerText ='👨‍💻📚 ✏️👾' + elem.list 
   list.className = 'list'
-  work.innerText = elem.work
+  work.innerText ='🏢'+  elem.work
   work.className = 'work'
-  work2.innerText = elem.work2
+  work2.innerText ='🛌'+ elem.work2
   work2.className = 'deal'
+
+
+
+
+
+  let title = document.createElement('span')
+  title.className ="truncate card-title"
+  title.innerText = elem.value
+
+
+  let img = document.createElement('img')
+  img.src = "./cj-GTA-San-Andreas-GTA-Игры-5660718.jpeg"
+
   btnRemove.innerText = 'del'
   btnRemove.addEventListener('click',(e)=>{
     console.log(e.target.closest('.col').id)
@@ -90,10 +108,10 @@ function create(elem){
   })
   cont.append(col);
   col.append(card)
-    card.append(cardContent,cardAction)
+    card.append(cardAction,cardContent,cardImage)
+    cardAction.prepend(data,work,work2,list,good)
     cardContent.prepend(title)
-    cardAction.prepend(data,good,list,work,work2,btnRemove)
-    
+    cardImage.prepend(img,btnRemove)
   }
 
 function removeElem(id,elem){
@@ -106,9 +124,7 @@ function removeElem(id,elem){
     body: JSON.stringify({'id':id})
   });
   elem.remove()
-
 }
-
 
 btn.addEventListener('click',push)
 
@@ -173,10 +189,3 @@ $('.open-popup-link').magnificPopup({
 
 
 
-
-let curcle = document.getElementById('curcle')
-curcle.addEventListener('click',()=>{
-  curcle.style.width = '100px'
-  curcle.style.height = '100px'
-  curcle.innerText = 'text'
-})
