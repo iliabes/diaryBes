@@ -105,12 +105,12 @@ hr {
 
 .modal-wind{
     margin: 0 auto;
-    width: 500px;
+    width: 50%;
     border: 1px solid #000;
     border-radius: 10px;
     overflow: hidden;
     position: relative;
-    background:#F1F8E9;
+    background:#b2fef7;
     position: absolute;
     top: 50px;
     left: 50%;
@@ -121,6 +121,7 @@ hr {
     opacity: 1;
     transition: transform 1.3s , opacity 0.4s , top .5s ;
     z-index: 999;
+    padding: 20px;
 }
 
 
@@ -172,9 +173,29 @@ hr {
 }
 
 
-.modal-wind .work ,.modal-wind .text,.modal-wind .deal ,.modal-wind .good, .modal-wind .data,.modal-wind .work2, .modal-wind .list{
+.download-form,.modal-wind .modal-data ,.modal-wind .work ,.modal-wind .text,.modal-wind .deal ,.modal-wind .good, .modal-wind .data,.modal-wind .work2, .modal-wind .list{
+
     display: inline-block;
-    width: 20%;
+    border:none;
+}
+
+body .modal-wind .modal-data{
+    width: 26%;
+    border:none;
+    color:#000;
+}
+
+.modal-action{
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid #000;
+}
+
+.work, .good{
+    background:#b2fef7;
+    border: none;
+    border-bottom: 1px dotted #000;
+    padding-bottom: 1px;
 }
 
 /* .modal-trigger{
@@ -183,6 +204,10 @@ hr {
     right: 50px;
     background-color: red;
 } */
+
+body .enable{
+    display: block;
+}
 
 /* ------------------------ */
 

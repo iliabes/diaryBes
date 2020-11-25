@@ -102,6 +102,7 @@ function create(elem){
   img.src = "./cj-GTA-San-Andreas-GTA-Игры-5660718.jpeg"
 
   btnRemove.innerText = 'del'
+  btnRemove.className = 'del waves-effect waves-light btn'
   btnRemove.addEventListener('click',(e)=>{
     console.log(e.target.closest('.col').id)
     removeElem(e.target.closest('.col').id,e.target.closest('.col'))
