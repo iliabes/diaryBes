@@ -1,213 +1,286 @@
-.cont{
-    background-color: red;
+@charset "UTF-8";
+.row {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 5px;
 }
 
-
-
-
-.card{
-    display:flex;
-    flex-direction: column;
-    box-shadow: 0.4em 0.4em 5px rgba(122,122,122,0.5);
+.card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-shadow: 0.4em 0.4em 5px rgba(122, 122, 122, 0.5);
+          box-shadow: 0.4em 0.4em 5px rgba(122, 122, 122, 0.5);
+  padding: 10px;
 }
 
-
-.card .mcard-action{
-    padding: 10px;
-    grid-template-rows: auto ;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid black;
+.card .mcard-action {
+  padding: 10px;
+  -ms-grid-rows: auto;
+      grid-template-rows: auto;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-bottom: 1px solid black;
 }
 
-.card .mcard-action .good{
-    width: 50px;
-    height: 20px;
-    border: 4px dotted white;
-}
-
-
-.card .mcard-action .good .green{
-    background-color: green;
-}
-
-.card .mcard-action .good .grey{
-    background-color: grey;
-}
-
-.card .mcard-action .good .red{
-    background-color: red;
-}
-
-.card .mcard-content{
-    padding: 10px;
-    width: 100%;
-    display: flex;
-    border-bottom: 1px dotted black;
-}
-
-
-.card .mcard-content .mcard-title{
-    font-size: 20px;
-}
-
-.card .card-image {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: center;
-    gap:1rem;
-}
-
-.card .card-image img{
-    width: 45%;
-   
-}
-
-.card .card-image .del{
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
-   
-}
-
-hr {
-    border: 0;
-    height: 1px;
-    background: #000;
-    background-image: -webkit-linear-gradient(left, #fff, #000, #fff);
-    background-image: -moz-linear-gradient(left, #fff, #000, #fff);
-    background-image: -ms-linear-gradient(left, #fff, #000, #fff);
-    background-image: -o-linear-gradient(left, #fff, #000, #fff);
-}
-
-
-.calendar::before {
-  font-family: "Font Awesome 5 Free";
+.card .mcard-action .data::before {
   font-weight: 400;
-  content: "\f1ea";
+  content: "📅";
   color: blue;
 }
 
-.myform{
-    background-color: #fff;
+.card .mcard-action .work::before {
+  font-family: FontAwesome;
+  font-weight: 400;
+  content: "\f275";
+  color: blue;
 }
 
-.curcle{
-    width: 50px;
-    height: 50px;
-    background-color: aquamarine;
-    border-radius: 100px;
+.card .mcard-action .deal::before {
+  height: 10px;
+  width: 10px;
+  font-weight: 400;
+  content: "🛌";
+  color: blue;
 }
 
-/* //----------------------------------- */
-
-.modal-wind{
-    margin: 0 auto;
-    width: 50%;
-    border: 1px solid #000;
-    border-radius: 10px;
-    overflow: hidden;
-    position: relative;
-    background:#b2fef7;
-    position: absolute;
-    top: 50px;
-    left: 50%;
-    margin-left: -250px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
-    visibility: visible;
-    transform: rotate3d(1, 0, 0, 0deg);
-    opacity: 1;
-    transition: transform 1.3s , opacity 0.4s , top .5s ;
-    z-index: 999;
-    padding: 20px;
+.card .mcard-action .green {
+  width: 50px;
+  height: 20px;
+  border: 4px dotted white;
+  background-color: green;
 }
 
-
-
-.modal-wind p{
-    padding: 5px;
+.card .mcard-action .white {
+  width: 50px;
+  height: 20px;
+  border: 4px dotted white;
+  background-color: white;
 }
 
-.header-cont{
-    width: 100%;
-    background: #A7FFEB;
-    height: 40px;
-    text-transform: uppercase;
-    text-align: center;
+.card .mcard-action .red {
+  width: 50px;
+  height: 20px;
+  border: 4px dotted white;
+  background-color: red;
 }
 
-.header-cont h1{
-    margin: 0;
-    font-size: 20px;
-    padding: 7px;
+.card .card-content {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-bottom: 1px dotted black;
 }
 
-
-.cancel{
-    position: absolute;
-    right: 0;
-    top: 0;
-    margin: 10px;
-    cursor: pointer;
+.card .card-content .mcard-title {
+  font-size: 20px;
 }
 
-#link{
-    cursor: pointer;
-    color:blue;
+.card .card-image img {
+  width: 45%;
 }
 
-.inp{
-    width: 80%;
-    margin: 5px;
+.card .card-image .del {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
 }
 
-.overlay{
-    top: 0;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: black;
-    opacity: .5;
+.modal-wind {
+  margin: 0 auto;
+  width: 50%;
+  border: 1px solid #000;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  background: #BBDEFB;
+  position: absolute;
+  top: 50px;
+  left: 22%;
+  -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  visibility: visible;
+  -webkit-transform: rotate3d(1, 0, 0, 0deg);
+          transform: rotate3d(1, 0, 0, 0deg);
+  opacity: 1;
+  -webkit-transition: opacity 0.4s, top .5s, -webkit-transform 1.3s;
+  transition: opacity 0.4s, top .5s, -webkit-transform 1.3s;
+  transition: transform 1.3s, opacity 0.4s, top .5s;
+  transition: transform 1.3s, opacity 0.4s, top .5s, -webkit-transform 1.3s;
+  z-index: 999;
+  padding: 20px;
+  min-width: 80%;
 }
 
-
-.download-form,.modal-wind .modal-data ,.modal-wind .work ,.modal-wind .text,.modal-wind .deal ,.modal-wind .good, .modal-wind .data,.modal-wind .work2, .modal-wind .list{
-
-    display: inline-block;
-    border:none;
+.modal-wind p {
+  padding: 5px;
 }
 
-body .modal-wind .modal-data{
-    width: 26%;
-    border:none;
-    color:#000;
+.modal-wind .cancel {
+  position: absolute;
+  right: 10;
+  bottom: 10;
+  cursor: pointer;
 }
 
-.modal-action{
-    display: flex;
-    flex-direction: row;
-    border-bottom: 1px solid #000;
+.modal-wind .download-form,
+.modal-wind .modal-wind .modal-data,
+.modal-wind .modal-wind .work,
+.modal-wind .modal-wind .text,
+.modal-wind .modal-wind .deal,
+.modal-wind .modal-wind .good,
+.modal-wind .modal-wind .data,
+.modal-wind .modal-wind .work2,
+.modal-wind .modal-wind .list {
+  display: inline-block;
+  border: none;
 }
 
-.work, .good{
-    background:#b2fef7;
-    border: none;
-    border-bottom: 1px dotted #000;
-    padding-bottom: 1px;
+.modal-wind .modal-action {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  border-bottom: 1px solid #000;
 }
 
-/* .modal-trigger{
-    position: absolute;
-    bottom: 50px;
-    right: 50px;
+.modal-wind .modal-action .data::after {
+  font-family: FontAwesome;
+  font-weight: 400;
+  content: "\f275";
+  color: blue;
+}
+
+.modal-wind .modal-action .work::after {
+  position: absolute;
+  height: 10px;
+  width: 10px;
+  font-weight: 400;
+  content: "📅";
+  color: blue;
+}
+
+.modal-wind .modal-action .deal::after {
+  position: absolute;
+  height: 10px;
+  width: 10px;
+  font-weight: 400;
+  content: "🛌";
+  color: blue;
+}
+
+.modal-wind .good {
+  background: transparent;
+  border: none;
+  border-bottom: 1px dotted #000;
+  padding-bottom: 1px;
+}
+
+.modal .range-field {
+  border-bottom: 1px dotted #000;
+}
+
+.overlay {
+  top: 0;
+  position: absolute;
+  width: 100%;
+  height: 150%;
+  background: black;
+  opacity: .5;
+}
+
+@media screen and (max-device-width: 2000px) {
+  .row {
+    -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+  .modal-wind {
+    min-width: 60%;
+  }
+  .modal-wind textarea {
+    height: 6rem;
+  }
+}
+
+@media screen and (max-device-width: 1500px) {
+  .row {
+    -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+  .card {
+    min-width: 231px;
+    max-width: 250px;
+  }
+}
+
+@media screen and (max-device-width: 1280px) {
+  .row {
+    -ms-grid-columns: 1fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+  .card {
     background-color: red;
-} */
-
-body .enable{
-    display: block;
+  }
+  .modal-wind {
+    min-width: 60%;
+  }
+  .modal-wind textarea {
+    height: 8rem;
+  }
 }
 
-/* ------------------------ */
+@media screen and (max-device-width: 1024px) {
+  .row {
+    -ms-grid-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+  }
+}
 
+@media screen and (max-device-width: 768px) {
+  .row {
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+  }
+  .modal-wind {
+    min-width: 100%;
+    left: 0%;
+  }
+  .modal-wind textarea {
+    height: 12rem;
+  }
+}
+
+@media screen and (max-device-width: 500px) {
+  .row {
+    -ms-grid-columns: 100%;
+        grid-template-columns: 100%;
+  }
+  .card {
+    margin: 0;
+    padding: 0;
+  }
+  .modal-wind {
+    min-height: 400px;
+    min-width: 100%;
+    left: 0%;
+  }
+  .modal-wind textarea {
+    height: 24rem;
+  }
+}
+/*# sourceMappingURL=style.css.map */

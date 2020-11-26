@@ -81,7 +81,7 @@ class modal{
         modalFooter.className = 'modal-footer'
 
         let value = document.createElement('textarea')
-        let text = document.createElement('textarea')
+        let text = document.createElement('input')
         let work = document.createElement('input')
         let list = document.createElement('input')
         let deal = document.createElement('input')
@@ -104,7 +104,7 @@ class modal{
             text.value = linkClick.firstChild.children[1].children[0].innerText
             work.value = linkClick.firstChild.children[0].children[1].innerText
             deal.value = linkClick.firstChild.children[0].children[2].innerText
-            list.value = linkClick.firstChild.children[0].children[3].innerText
+            list.value = linkClick.firstChild.children[0].childNodes[3].getAttribute('data-value')
             data.value = linkClick.firstChild.children[0].children[0].innerText
             value.value = linkClick.firstChild.children[1].children[0].innerText
             good.value = linkClick.firstChild.children[0].children[4].className
@@ -119,7 +119,8 @@ class modal{
         deal.className = 'deal'
         data.className = 'data'
         good.className = 'good'
-        cancel.className = 'cancel'
+        cancel.className = 'cancel waves-effect waves-light btn'
+        btn.className = 'waves-effect waves-light btn'
 
         // this.cont.append(overlay)
         // this.cont.append(modalWind)
