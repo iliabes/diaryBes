@@ -27,4 +27,8 @@ module.exports = new Schema({
       type: String,
       default: 'gooddata'
     },
+    src: {
+      type: String,
+      default: 'none'
+    },
   });

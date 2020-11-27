@@ -16,16 +16,26 @@ const LocalStrategy = require('passport-local').Strategy;
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 const MySheme = require('./model/sheme')
-const mutler = require('multer')
+const multer = require('multer')
 
 
 //port !!!!!
+const storageConfig = multer.diskStorage({
+  destination: (req, file, cb) =>{
+      cb(null, "public/img");
+  },
+  filename: (req, file, cb) =>{
+      cb(null, file.originalname);
+  }
+});
+
+
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static(__dirname + "/public"));
 app.use(passport.initialize());
-app.use(mutler({dest:'upload'}).single('filedata'))
+app.use(multer({storage:storageConfig}).single("filedata"));
 
 
 const UserDB = {
@@ -98,10 +108,31 @@ app.use('/mass',async (req,res)=>{
     })
     })
 
-    app.post('/bd',(req,res)=>{
+
+    app.post("/upload", function (req, res, next) {
+   
+      let filedata = req.file;
+      console.log(filedata);
+      if(!filedata)
+          res.send("Ошибка при загрузке файла");
+      else
+          res.send("Файл загружен");
+  });
+
+
+    app.post('/bd',(req,res,next)=>{
       console.log('bd')
+      
+      console.dir(req.body)
       console.log(req.body)
-      let saveUser = new User(req.body)
+      let filedata = req.file;
+      console.log(filedata.filename);
+      if(!filedata)
+          console.log("Ошибка при загрузке файла");
+      else
+          console.log("Файл загружен");
+      // let saveUser = new User(req.body)
+      let saveUser = new User({value:req.body.value,src:"filedata.filename"})
       saveUser.save((err)=>{
         if(err){console.log(err)}
         console.log('save is :' + saveUser)

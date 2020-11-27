@@ -25,12 +25,15 @@ if (await response.ok) {
 
 
 async function meFetch(data){
+  let fd = new FormData(form);
   let response = await fetch('/bd',{
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json;charset=utf-8'
-    },
-    body: JSON.stringify(data)
+    // headers: {
+    //   'Content-Type': 'application/json;charset=utf-8'
+    // },
+      //-------------------------------.//
+    body: fd
+      //-------------------------------.//
   });
 }
 
@@ -42,9 +45,12 @@ function push(){
   event.preventDefault();
   let fd = new FormData(form);
   console.log(fd.get('value'))
-  let data = {"value": fd.get('value'),"data":fd.get('data'),"work": fd.get('work'),"work2":fd.get('work2'),"list":valueOflist,"good":fd.get('good'),"file":fd.get('filedata')}
-  meFetch(data)
-  create(data)
+  meFetch()
+  //-------------------------------.//
+  // let data = {"value": fd.get('value'),"data":fd.get('data'),"work": fd.get('work'),"work2":fd.get('work2'),"list":valueOflist,"good":fd.get('good'),"file":fd.get('filedata')}
+  // meFetch(data)
+  // create(data)
+  //-------------------------------------//
   console.log(data)
 }
 
