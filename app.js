@@ -125,14 +125,19 @@ app.use('/mass',async (req,res)=>{
       
       console.dir(req.body)
       console.log(req.body)
-      let filedata = req.file;
-      console.log(filedata.filename);
-      if(!filedata)
-          console.log("Ошибка при загрузке файла");
-      else
-          console.log("Файл загружен");
+      let filedata;
+      if(req.file){
+        filedata = req.file;
+        console.log("Файл загружен:" +filedata.filename);
+      }
       // let saveUser = new User(req.body)
-      let saveUser = new User({value:req.body.value,src:"filedata.filename"})
+      let saveUser = new User({
+        value:req.body.value,
+        src:req.file ? filedata.filename : '',
+        work:req.body.work,
+        work2:req.body.work2,
+        list:req.body.list,
+        good:req.body.good})
       saveUser.save((err)=>{
         if(err){console.log(err)}
         console.log('save is :' + saveUser)

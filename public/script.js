@@ -51,6 +51,8 @@ function push(){
   // meFetch(data)
   // create(data)
   //-------------------------------------//
+  let data = {"value": fd.get('value'),"data":fd.get('data'),"work": fd.get('work'),"work2":fd.get('work2'),"list":valueOflist,"good":fd.get('good'),"file":fd.get('filedata')}
+  create(data)
   console.log(data)
 }
 
@@ -115,7 +117,8 @@ function create(elem){
 
 
   let img = document.createElement('img')
-  img.src = "./img/cj-GTA-San-Andreas-GTA-Игры-5660718.jpeg"
+
+  // img.src = "./img/cj-GTA-San-Andreas-GTA-Игры-5660718.jpeg"
 
   btnRemove.innerText = 'del'
   btnRemove.className = 'del waves-effect waves-light btn'
@@ -140,7 +143,12 @@ function create(elem){
     }
     // list.append(js,eng,draw,unity)
     cardContent.prepend(title)
-    cardImage.prepend(img,btnRemove)
+    if(elem.src != ''){
+      console.log('elem src = ' + elem.src)
+      img.src = '/img/' + elem.src
+      cardImage.prepend(img)
+    }
+    cardImage.prepend(btnRemove)
   }
 
 function removeElem(id,elem){
