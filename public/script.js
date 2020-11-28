@@ -5,6 +5,7 @@ let btn = document.getElementById('btn')
 let form = document.getElementById('form')
 let list = document.getElementById('list')
 
+
 async function start(){
 console.log('start is work')
 let url = '/mass'

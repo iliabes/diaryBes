@@ -1,7 +1,7 @@
 
 const express = require('express');
 const app = express();
-
+let port = process.env.PORT || 3000;
 
 
 
@@ -183,7 +183,7 @@ app.use('/mass',async (req,res)=>{
 async function start (){
   try{
       mongoose.connect("mongodb+srv://dataBase:1q2w3e@cluster0.ejvhd.mongodb.net/collect1", { useNewUrlParser: true ,useUnifiedTopology: true,useFindAndModify:false},()=>{
-      app.listen(3000,()=>{
+      app.listen(port,()=>{
           console.log('server is done')
       })
   });
